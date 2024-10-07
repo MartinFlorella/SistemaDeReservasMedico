@@ -4,9 +4,8 @@ package Sistema.ReservasMedico.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.util.List;
 
 import lombok.Getter;
@@ -23,18 +22,18 @@ public class ServicioMedico {
     private double precio;
     private int duracionMinutos; // Duración del servicio
 
-    @OneToMany(mappedBy = "servicioMedico")
-    private List<Turno> turnos;
+    @OneToOne
+    private Turno turno;
 
     public ServicioMedico() {
     }
 
-    public ServicioMedico(Long id, String nombre, double precio, int duracionMinutos, List<Turno> turnos) {
+    public ServicioMedico(Long id, String nombre, double precio, int duracionMinutos, Turno turno) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.duracionMinutos = duracionMinutos;
-        this.turnos = turnos;
+        this.turno = turno;
     }
     
     
