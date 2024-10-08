@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+
 
 import java.time.LocalDateTime;
 import lombok.Getter;
@@ -29,24 +29,24 @@ public class Turno {
 
     private LocalDateTime fechaHora; // Fecha y hora del turno
 
-    private String servicio; // Nombre del servicio médico
+    private ServicioMedico servicio;  // Nombre del servicio médico
     private boolean confirmado; // Para marcar si el turno fue confirmado o no
     
-    @OneToOne
-    private ServicioMedico serviMedico;
-    
+
     public Turno() {
     }
 
-    public Turno(Long id, Paciente paciente, Medico medico, LocalDateTime fechaHora, String servicio, boolean confirmado, ServicioMedico serviMedico) {
+    public Turno(Long id, Paciente paciente, Medico medico, LocalDateTime fechaHora, ServicioMedico servicio, boolean confirmado) {
         this.id = id;
         this.paciente = paciente;
         this.medico = medico;
         this.fechaHora = fechaHora;
         this.servicio = servicio;
         this.confirmado = confirmado;
-        this.serviMedico = serviMedico;
     }
+
+    
+    
 
 
     
