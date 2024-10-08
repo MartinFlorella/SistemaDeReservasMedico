@@ -1,7 +1,7 @@
 
 package Sistema.ReservasMedico.Model;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +22,9 @@ public class Paciente {
     private String dni;
     private String telefono;
     private String direccion;
-
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "paciente")
     private List<Turno> turnos;
 
     public Paciente() {

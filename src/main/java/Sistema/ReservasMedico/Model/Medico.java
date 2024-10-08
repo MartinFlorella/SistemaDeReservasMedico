@@ -1,12 +1,16 @@
 
 package Sistema.ReservasMedico.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,13 +22,17 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @NotBlank
     private String nombre;
+    @NotBlank
     private String especialidad;
+    @Min(6)@Max(8)
     private String telefono;
     private String horarioAtencion; // Horario en formato String o crear una clase específica para horarios
-
-    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "medico")
     private List<Turno> turnos;
 
     public Medico() {
