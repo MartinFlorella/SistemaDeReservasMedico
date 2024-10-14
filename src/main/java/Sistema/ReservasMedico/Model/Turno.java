@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Future;
 
 
 import java.time.LocalDateTime;
@@ -21,14 +23,17 @@ public class Turno {
 
     @ManyToOne
     @JoinColumn(name = "paciente_id")
+    @Valid
     private Paciente paciente;
 
     @ManyToOne
     @JoinColumn(name = "medico_id")
+    @Valid
     private Medico medico;
-
+    
+    @Future
     private LocalDateTime fechaHora; // Fecha y hora del turno
-
+    
     private ServicioMedico servicio;  // Nombre del servicio médico
     private boolean confirmado; // Para marcar si el turno fue confirmado o no
     

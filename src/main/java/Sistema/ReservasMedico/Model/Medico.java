@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +28,7 @@ public class Medico {
     private String nombre;
     @NotBlank
     private String especialidad;
-    @Min(6)@Max(8)
+    @Size(min = 6, max = 8)
     private String telefono;
     private String horarioAtencion; // Horario en formato String o crear una clase específica para horarios
     

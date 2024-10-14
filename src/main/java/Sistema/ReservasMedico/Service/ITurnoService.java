@@ -10,11 +10,11 @@ public interface ITurnoService {
         
     //Sacar un turno
     
-    public String RegistrarTurno (Turno turno);
+    public String registrarTurno (Turno turno);
     
      Turno obtenerTurnoPorId(Long id);
     
-     List<Turno> obtenerTodosLosTurno();
+     List<Turno> obtenerTodosLosTurnos();
      
      void eliminarTurno(Long id);
      

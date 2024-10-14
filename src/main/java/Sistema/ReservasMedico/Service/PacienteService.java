@@ -10,9 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+ 
+
+
 @Service
 public class PacienteService implements IPacienteService {
 
+    @Autowired
+    public PacienteService(PacienteRepository pacienteRepo) {
+        this.pacienteRepo = pacienteRepo;
+    }
+    
+    
     @Autowired
     private PacienteRepository pacienteRepo;
     

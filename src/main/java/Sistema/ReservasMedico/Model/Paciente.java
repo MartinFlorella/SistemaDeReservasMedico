@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +19,13 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotBlank
     private String nombre;
+    @NotBlank
     private String dni;
+    @NotBlank
     private String telefono;
+    @NotBlank
     private String direccion;
     
     @JsonIgnore
@@ -37,6 +42,14 @@ public class Paciente {
         this.telefono = telefono;
         this.direccion = direccion;
         this.turnos = turnos;
+    }
+
+    public Paciente(Long id, String nombre, String dni, String telefono, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.direccion = direccion;
     }
 
     

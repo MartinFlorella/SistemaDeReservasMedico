@@ -19,7 +19,7 @@ public class TurnoService implements ITurnoService{
     private TurnoRepository turnoRepo;
 
     @Override
-    public String RegistrarTurno(Turno turno) {
+    public String registrarTurno(Turno turno) {
             //Verificar si existe el paciente y el medico
             if(turno.getPaciente() == null  || turno.getMedico() == null ){
                 throw new EntityNotFoundException("El paciente o el medico no fueron encontrados");
@@ -47,7 +47,7 @@ public class TurnoService implements ITurnoService{
     }
 
     @Override
-    public List<Turno> obtenerTodosLosTurno() {
+    public List<Turno> obtenerTodosLosTurnos() {
 try{
     List<Turno> listaTurnos = turnoRepo.findAll();
             if(listaTurnos.isEmpty()){
